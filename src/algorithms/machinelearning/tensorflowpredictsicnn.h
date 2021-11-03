@@ -62,10 +62,10 @@ class TensorflowPredictSiCNN : public AlgorithmComposite {
   void declareParameters() {
     declareParameter("graphFilename", "the name of the file from which to load the TensorFlow graph", "", "");
     declareParameter("savedModel", "the name of the TensorFlow SavedModel. Overrides parameter `graphFilename`", "", "");
-    declareParameter("input", "the name of the input node in the TensorFlow graph", "", "model/Placeholder");
-    declareParameter("output", "the name of the node from which to retrieve the output tensors", "", "model/Sigmoid");
+    declareParameter("input", "the name of the input node in the TensorFlow graph", "", "x");
+    declareParameter("output", "the name of the node from which to retrieve the output tensors", "", "model/predictions/Sigmoid");
     declareParameter("isTrainingName", "the name of an additional input node to indicate the model if it is in training mode or not. Leave it empty when the model does not need such input", "", "");
-    declareParameter("patchHopSize", "the number of frames between the beginnings of adjacent patches. 0 to avoid overlap", "[0,inf)", 93);
+    declareParameter("patchHopSize", "the number of frames between the beginnings of adjacent patches. 0 to avoid overlap", "[0,inf)", 50);
     declareParameter("lastPatchMode", "what to do with the last frames: `repeat` them to fill the last patch or `discard` them", "{discard,repeat}", "discard");
     declareParameter("batchSize", "number of patches to process in parallel. When set to -1 it runs a single TensorFlow session at the end of the stream.", "(-1,inf)", 32);
   }
@@ -114,10 +114,10 @@ class TensorflowPredictSiCNN : public Algorithm {
   void declareParameters() {
     declareParameter("graphFilename", "the name of the file from which to load the TensorFlow graph", "", "");
     declareParameter("savedModel", "the name of the TensorFlow SavedModel. Overrides parameter `graphFilename`", "", "");
-    declareParameter("input", "the name of the input nodes in the Tensorflow graph", "", "model/Placeholder");
-    declareParameter("output", "the name of the node from which to retrieve the output tensors", "", "model/Sigmoid");
+    declareParameter("input", "the name of the input node in the TensorFlow graph", "", "x");
+    declareParameter("output", "the name of the node from which to retrieve the output tensors", "", "model/predictions/Sigmoid");
     declareParameter("isTrainingName", "the name of an additional input node indicating whether the model is to be run in a training mode (for models with a training mode, leave it empty otherwise)", "", "");
-    declareParameter("patchHopSize", "number of frames between the beginnings of adjacent patches. 0 to avoid overlap", "[0,inf)", 93);
+    declareParameter("patchHopSize", "number of frames between the beginnings of adjacent patches. 0 to avoid overlap", "[0,inf)", 50);
     declareParameter("lastPatchMode", "what to do with the last frames: `repeat` them to fill the last patch or `discard` them", "{discard,repeat}", "discard");
     declareParameter("batchSize", "number of patches to process in parallel. When set to -1 it runs a single TensorFlow session at the end of the stream.", "(-1,inf)", 32);
   }
