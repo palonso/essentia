@@ -58,12 +58,11 @@ class TensorflowInputSiCNN : public Algorithm {
   Real _eps = 1.1e-8;
   std::string _warpingFormula = "slaneyMel";
   std::string _weighting = "linear";
-  std::string _normalize = "unit_sum";
+  std::string _normalize = "unit_max";
   std::string _melType = "power";
 
   // UnaryOperator
-  // std::string _compType = "log10";
-  std::string _compType = "identity";
+  std::string _compType = "log10";
 
  public:
   TensorflowInputSiCNN() {

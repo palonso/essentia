@@ -80,7 +80,6 @@ void TensorflowInputSiCNN::compute() {
 
   _windowing->input("frame").set(frame);
   _compression->output("array").set(_bands.get());
-  // _spectrum->output("spectrum").set(_bands.get());
 
   _windowing->compute();
   _spectrum->compute();
